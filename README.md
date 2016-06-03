@@ -1,11 +1,13 @@
 # An Alternative Matting Laplacian
 
-This package contains two scripts to run colour grading as described in
+This package contains the code described in:
 
 ```
 [Pitie16] An Alternative Matting Laplacian. F. Pitie, (2016)
           In International Conference on Image Processing (ICIP'16), September.
 ```
+
+This paper offers an alternative formulation to the Matting Laplacian proposed in [1].
 
 Please cite our publication when using the code.
 
@@ -25,7 +27,7 @@ Run the demo
 </tr>
 <tr>
 <td>input image</td>
-<td>input alpha estimate (using sampling)</td>
+<td>input alpha estimate (using [2])</td>
 </tr>
 <tr>
 <td><img src="result-alpha-GT04.png"  width="320" ></td>
@@ -49,7 +51,11 @@ Run the demo
 
 ```
 [1] A. Levin, D. Lischinski, and Y. Weiss, “A closed-form solution to natural image matting,”
-Pattern Analysis and Machine Intelligence, IEEE Transactions on, vol. 30, no. 2, pp. 228–242, Feb 2008.
+    Pattern Analysis and Machine Intelligence, IEEE Transactions on, vol. 30, no. 2,
+    pp. 228–242, Feb 2008.
+[2] Kaiming He, C. Rhemann, C. Rother, Xiaoou Tang, and Jian Sun, “A global sampling method
+    for alpha matting,” in Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on,
+	June 2011, pp. 2049–2056.	
 ```
 
 
