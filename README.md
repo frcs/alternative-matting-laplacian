@@ -47,6 +47,8 @@ Run the demo
 </tr>
 </table>
 
+The image is taken from the [alpha matting evaluation website](http://www.alphamatting.com) [3].
+
 ##References
 
 ```
@@ -55,7 +57,9 @@ Run the demo
     pp. 228–242, Feb 2008.
 [2] Kaiming He, C. Rhemann, C. Rother, Xiaoou Tang, and Jian Sun, “A global sampling method
     for alpha matting,” in Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on,
-	June 2011, pp. 2049–2056.	
+	June 2011, pp. 2049–2056.
+[3] Christoph Rhemann, Carsten Rother, Jue Wang, Margrit Gelautz, Pushmeet Kohli, and Pamela Rott,
+    “Alpha matting evaluation website,” http://www.alphamatting.com.
 ```
 
 
