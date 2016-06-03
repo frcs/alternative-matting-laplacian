@@ -34,7 +34,7 @@ Run the demo
 <td></td>
 </tr>
 <tr>
-<td>estimated alpha (rescale)</td>
+<td>estimated alpha</td>
 <td></td>
 </tr>
 <tr>
@@ -42,8 +42,8 @@ Run the demo
 <td><img src="result-b-GT04.png"  width="320" ></td>
 </tr>
 <tr>
-<td>estimated a (rescale)</td>
-<td>estimated b (rescale)</td>
+<td>estimated a (rescaled)</td>
+<td>estimated b (rescaled)</td>
 </tr>
 </table>
 
