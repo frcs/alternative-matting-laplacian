@@ -23,6 +23,8 @@ addOptional(p,'sigma_r',  1, @isnumeric);
 addOptional(p,'T',     1e-8, @isnumeric);
 addOptional(p,'alpha0',  [], @isnumeric);
 addOptional(p,'walpha0', [], @isnumeric);
+addOptional(p,'model',   [], @ischar);
+addOptional(p,'width',   [], @isnumeric);
 
 parse(p, I, varargin{:});
 
@@ -35,6 +37,18 @@ B         = p.Results.B;
 wB        = p.Results.wB;
 F         = p.Results.F;
 wF        = p.Results.wF;
+model     = p.Results.model;
+width     = p.Results.width;
+
+if isempty(width)
+    width = size(I,2);
+end
+
+resize = (width ~= size(I,2));
+
+if isempty(model)
+    model = 'affine';
+end
 
 if isempty(alpha0) && isempty(trimap)
     error('a trimap or alpha0 must be provided');
@@ -51,14 +65,19 @@ end
 
 fprintf('... computing local colour covariances\n');
 
+Ihires = I;
 [vres, hres, ~] = size(I);
-X = cat(3, I, ones(vres, hres));
+
+if (strcmp(model, 'linear'))
+    X = I;
+elseif (strcmp(model, 'affine'))
+    X = cat(3, I, ones(vres, hres));
+else
+    error('unknown model');
+end
 
 K    = size(X, 3);
-hres = size(I,2);
-vres = size(I,1);
 
-unknown = ones(vres, hres);
 
 % we denote (X X') as R
 R = estimate_R(X);
@@ -106,8 +125,18 @@ beta0 = repmat(walpha0, [1 1 K]).* betaT +...
         repmat(wB, [1 1 K]) .* betaB + ...
         repmat(wF, [1 1 K]) .* betaF;
 
+
+if (resize)
+    R = imresize(R, [NaN width ]);
+    R0 = imresize(R0, [NaN width]);
+    beta0 = imresize(beta0, [NaN width]);
+    hres = size(beta0,2);
+    vres = size(beta0,1);    
+end
+
 R = blur(R, sigma_r);
 
+unknown = ones(vres, hres);
 inds = find(unknown);
 
 [ys, xs] = ind2sub([vres, hres], inds);
@@ -200,6 +229,11 @@ tic
 beta0_ = reshape(permute(beta0, [3 1 2]), [], 1);
 a_ = A\beta0_;
 a = permute(reshape(a_, K, vres, hres), [2 3 1]);
+
+if (resize)
+    a = imresize(a, [size(Ihires,1) size(Ihires,2)]);
+end
+
 toc
 alpha = sum(a.*X, 3);
 
