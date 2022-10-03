@@ -11,7 +11,7 @@ This paper offers an alternative formulation to the Matting Laplacian proposed i
 
 Please cite our publication when using the code.
 
-Send an email to fpitie@mee.tcd.ie if you want more information
+Send an email to pitief@tcd.ie if you want more information
 
 ## Example
 
@@ -49,7 +49,7 @@ Run the demo
 
 The image is taken from the [alpha matting evaluation website](http://www.alphamatting.com) [3].
 
-##References
+## References
 
 ```
 [1] A. Levin, D. Lischinski, and Y. Weiss, “A closed-form solution to natural image matting,”
